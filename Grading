@@ -1,0 +1,111 @@
+# Data-Structure
+import java.util.Scanner;
+
+public class Grading
+{
+    public static void main (String [] args)
+    {
+        int [] grade;
+        int size, temp;
+        String tempname;
+        String [] name;
+        String [] equva;
+        Scanner Input = new Scanner (System.in);
+
+        System.out.print("Number of Students: ");
+        size = Input.nextInt();
+        grade = new int [size];
+        name = new String [size];
+        equva = new String [size];
+        for(int a = 0; a < size ; a++)
+        {
+            Input = new Scanner (System.in);
+            System.out.print("Student`s Name " + (a + 1) + ": " );
+            name[a] = Input.nextLine();
+            System.out.print("Student`s Grade " + (a + 1)+ ": ");
+            grade[a] = Input.nextInt();
+        }
+
+        for(int change = 0; change < size; change++)
+        {
+            if (grade[change] <= 100 && grade[change] >= 97)
+            {
+                equva[change] = "1.0";
+            }
+            else if (grade[change] <= 96 && grade[change] >= 94)
+            {
+                equva[change] = "1.25";
+            }
+            else if (grade[change] <= 93 && grade[change] >= 91)
+            {
+                equva[change] = "1.50";
+            }
+            else if (grade[change] <= 90 && grade[change] >= 88)
+            {
+                equva[change] = "1.75";
+            }
+            else if (grade[change] <= 87 && grade[change] >= 85)
+            {
+                equva[change] = "2.00";
+            }
+            else if (grade[change] <= 84 && grade[change] >= 82)
+            {
+                equva[change] = "2.25";
+            }
+            else if (grade[change] <= 81 && grade[change] >= 79)
+            {
+                equva[change] = "2.50";
+            }
+            else if (grade[change] <= 78 && grade[change] >= 76)
+            {
+                equva[change] = "2.75";
+            }
+            else if (grade[change] == 75)
+            {
+                equva[change] = "3.00";
+            }
+            else if (grade[change] <= 74 && grade[change] >= 73)
+            {
+                equva[change] = "4.00";
+            }
+            else if (grade[change] <= 72)
+            {
+                equva[change] = "Failed/DO/DA/INC/DU";
+            }
+            else
+            {
+                equva[change] = "ERROR";
+            }
+        }
+
+        for (int b = 0; b < size; b++)
+        {
+            for (int c = 0; c < size; c++)
+            {
+                if (grade[b] > grade[c])
+                {
+                    temp = grade[b];
+                    grade[b] = grade[c];
+                    grade[c] = temp;
+
+                    tempname = name[b];
+                    name[b] = name[c];
+                    name[c] = tempname;
+
+                    String convert = equva[b];
+                    equva[b] = equva[c];
+                    equva[c] = convert;
+
+                }
+            }
+        }
+
+        System.out.println("\n");
+        System.out.print("Student Name\tGrade\t\tEquivalent\n");
+
+        for (int j = 0; j < size; j++)
+        {
+            System.out.println(name[j] + "\t\t" + grade[j] + "\t\t" + equva[j]);
+        }
+    }
+}
